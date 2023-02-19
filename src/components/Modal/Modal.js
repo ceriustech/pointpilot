@@ -1,32 +1,48 @@
 import React, { useState } from 'react';
 import { ModalContainer, ModalContent } from './styles';
 
-function Modal({ children }) {
+const Modal = () => {
 	// State for controlling the visibility of the modal
 	const [isOpen, setIsOpen] = useState(false);
+	const [sessionCode, setSessionCode] = useState('');
+	const [username, setUsername] = useState('');
 
-	// Function for opening the modal
-	const openModal = () => {
-		setIsOpen(true);
-	};
+	function handleSessionCode() {
+		setSessionCode(Math.random().toString(36).substring(2, 8));
+	}
+	// Function for toggling the modal
+	function handleModal() {
+		setIsOpen(!isOpen);
+	}
 
-	// Function for closing the modal
-	const closeModal = () => {
-		setIsOpen(false);
-	};
+	function handleModalEvent(event) {
+		event.stopPropagation();
+	}
 
 	return (
 		<>
-			<button onClick={openModal}>Open Modal</button>
+			<button onClick={handleModal}>Open Modal</button>
 			{isOpen && (
-				<ModalContainer onClick={closeModal}>
-					<ModalContent onClick={(event) => event.stopPropagation()}>
-						{children}
+				<ModalContainer onClick={handleModal}>
+					<ModalContent onClick={handleModalEvent}>
+						<form>
+							<label htmlFor="username">Username:</label>
+							<input
+								type="text"
+								id="username"
+								value={username}
+								onChange={(event) => setUsername(event.target.value)}
+							/>
+						</form>
+						<div>
+							<button onClick={handleSessionCode}>Generate Session Code</button>
+							<h1>Session Code: {sessionCode}</h1>
+						</div>
 					</ModalContent>
 				</ModalContainer>
 			)}
 		</>
 	);
-}
+};
 
 export default Modal;

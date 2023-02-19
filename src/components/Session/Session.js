@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
-const fibonacci = [1, 2, 3, 5, 8];
+const fibonacci = [1, 2, 3, 5, 8, 13, 21, 34];
 
 const Session = () => {
-	const [sessionId, setSessionId] = useState('');
 	const [username, setUsername] = useState('');
 	const [usernameColor, setUsernameColor] = useState('');
 	const [usernameIcon, setUsernameIcon] = useState('');
@@ -17,20 +16,7 @@ const Session = () => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="session-id">Session ID:</label>
-				<input
-					type="text"
-					id="session-id"
-					value={sessionId}
-					onChange={(event) => setSessionId(event.target.value)}
-				/>
-				<label htmlFor="username">Username:</label>
-				<input
-					type="text"
-					id="username"
-					value={username}
-					onChange={(event) => setUsername(event.target.value)}
-				/>
+
 				<label htmlFor="username-color">Username Color:</label>
 				<input
 					type="color"
@@ -63,22 +49,4 @@ const Session = () => {
 	);
 };
 
-const App = () => {
-	const [sessionCode, setSessionCode] = useState('');
-
-	return (
-		<div>
-			<h1>Session Code: {sessionCode}</h1>
-			<button
-				onClick={() =>
-					setSessionCode(Math.random().toString(36).substring(2, 8))
-				}
-			>
-				Generate Session Code
-			</button>
-			<Session />
-		</div>
-	);
-};
-
-export default App;
+export default Session;

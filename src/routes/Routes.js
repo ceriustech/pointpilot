@@ -1,6 +1,6 @@
 import Home from '../pages/Home';
 import Faq from '../pages/FAQ';
-import Pointer from '../pages/Pointer';
+import Session from '../components/Session';
 
 export const routes = [
 	{
@@ -16,9 +16,9 @@ export const routes = [
 		path: '/faq',
 	},
 	{
-		id: 'pointer',
-		page: <Pointer />,
-		name: 'Pointer',
-		path: '/pointer',
+		id: 'session',
+		page: <Session />,
+		name: 'Session',
+		path: '/session/:id',
 	},
 ];
