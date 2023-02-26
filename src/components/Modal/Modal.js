@@ -6,9 +6,15 @@ const Modal = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [sessionCode, setSessionCode] = useState('');
 	const [username, setUsername] = useState('');
+	const [usernameColor, setUsernameColor] = useState('');
+	const [usernameIcon, setUsernameIcon] = useState('');
 
 	function handleSessionCode() {
 		setSessionCode(Math.random().toString(36).substring(2, 8));
+	}
+
+	function handleUsername(event) {
+		setUsername(event.target.value);
 	}
 	// Function for toggling the modal
 	function handleModal() {
@@ -19,20 +25,43 @@ const Modal = () => {
 		event.stopPropagation();
 	}
 
+	function handleSubmit(event) {
+		event.preventDefault();
+		// logic to calculate the average value of checked fibonacci checkboxes
+		// and link it to the sessionId
+	}
+
 	return (
 		<>
-			<button onClick={handleModal}>Open Modal</button>
+			<button onClick={handleModal}>Get Started</button>
 			{isOpen && (
 				<ModalContainer onClick={handleModal}>
 					<ModalContent onClick={handleModalEvent}>
-						<form>
+						<form onSubmit={handleSubmit}>
 							<label htmlFor="username">Username:</label>
 							<input
 								type="text"
 								id="username"
 								value={username}
-								onChange={(event) => setUsername(event.target.value)}
+								onChange={handleUsername}
+								autoCompleteValue="off"
 							/>
+							<label htmlFor="username-color">Username Color:</label>
+							<input
+								type="color"
+								id="username-color"
+								value={usernameColor}
+								onChange={(event) => setUsernameColor(event.target.value)}
+							/>
+							<label htmlFor="username-icon">Username Icon:</label>
+							<input
+								type="file"
+								id="username-icon"
+								onChange={(event) =>
+									setUsernameIcon(URL.createObjectURL(event.target.files[0]))
+								}
+							/>
+							<button type="submit">Submit</button>
 						</form>
 						<div>
 							<button onClick={handleSessionCode}>Generate Session Code</button>
