@@ -1,22 +1,22 @@
 export const TEXT_COLORS = {
 	white: '#FFF',
-	black: '#OOO',
+	black: '#000',
 	grey: '#B2B9C4',
 };
 
 export const BACKGROUND_COLORS = {
-	background1: '#B2B9C4',
-	background2: '#4141D6',
-	background3: '#D4D4D4',
-	background4: '#EBEDEF',
-	background5: '##BB82D4',
+	background1: '#FFFDF6',
+	background2: '#87B0DC',
+	background3: '#6A9ACB',
+	background4: '#F36065',
+	background5: '#F2DDDB',
+	background6: '#ADCEED',
 };
 
 export const BASE_COLORS = {
-	baseColor1: '#869AB8',
-	blue: '#00008b',
+	blue: '#2B64B8',
 	darkBlue: '#5348BF',
 	lightBlue: '#3F95CF',
-	purple: '#9400d3',
-	lightPurple: '#B981D6',
+	lightGrey: '#E7E7E7',
+	darkGrey: '#828282',
 };

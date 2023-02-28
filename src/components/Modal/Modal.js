@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ModalContainer, ModalContent } from './styles';
+import Button from '../../global/components/Button';
 
 const Modal = () => {
 	// State for controlling the visibility of the modal
@@ -61,10 +62,13 @@ const Modal = () => {
 									setUsernameIcon(URL.createObjectURL(event.target.files[0]))
 								}
 							/>
-							<button type="submit">Submit</button>
+							<Button type="submit" text={'Submit'} />
 						</form>
 						<div>
-							<button onClick={handleSessionCode}>Generate Session Code</button>
+							<Button
+								onClick={handleSessionCode}
+								text={'Generate Session Code'}
+							/>
 							<h1>Session Code: {sessionCode}</h1>
 						</div>
 					</ModalContent>
