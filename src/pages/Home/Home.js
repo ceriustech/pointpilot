@@ -1,10 +1,9 @@
 import React from 'react';
-import Modal from '../../components/Modal';
 
 const Home = () => {
 	return (
 		<div>
-			<Modal />
+			<h1>Make </h1>
 		</div>
 	);
 };

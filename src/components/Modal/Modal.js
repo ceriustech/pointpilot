@@ -45,7 +45,6 @@ const Modal = () => {
 								id="username"
 								value={username}
 								onChange={handleUsername}
-								autoCompleteValue="off"
 							/>
 							<label htmlFor="username-color">Username Color:</label>
 							<input

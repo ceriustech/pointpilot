@@ -5,6 +5,7 @@ import { routes } from '../../../../routes/Routes';
 
 const NavigationContainer = () => (
 	<NavContainer className="nav-container">
+		<div>Logo</div>
 		{routes.map((item) => (
 			<NavigationItem data={item} key={item.id} />
 		))}
