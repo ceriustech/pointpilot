@@ -25,6 +25,10 @@ export const StyledButton = styled.button`
 			cursor: pointer;
 			font-size: 1rem;
 			padding: 0.5rem 1rem;
+
+			&:disabled {
+				opacity: 0.5;
+			}
 		`;
 	}}
 `;
