@@ -19,7 +19,11 @@ const Guest = () => {
 		setSessionCode(code);
 	}
 
-	function handleUsername(event) {
+	function handleSessionName(event) {
+		setUsername(event.target.value);
+	}
+
+	function handleUserName(event) {
 		setUsername(event.target.value);
 	}
 
@@ -34,12 +38,19 @@ const Guest = () => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
+				<label htmlFor="sessionName">Session Name:</label>
+				<input
+					type="text"
+					id="sessionName"
+					value={username}
+					onChange={handleSessionName}
+				/>
 				<label htmlFor="username">Username:</label>
 				<input
 					type="text"
 					id="username"
 					value={username}
-					onChange={handleUsername}
+					onChange={handleUserName}
 				/>
 				<label htmlFor="username-color">Username Color:</label>
 				<input
