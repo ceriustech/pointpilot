@@ -1,5 +1,5 @@
 import Home from '../pages/Home';
-import About from '../pages/About';
+import HowItWorks from '../pages/HowItWorks';
 import Faq from '../pages/FAQ';
 import Donate from '../pages/Donate';
 import Guest from '../pages/Guest';
@@ -14,11 +14,11 @@ export const routes = [
 		path: '/',
 	},
 	{
-		id: 'about',
+		id: 'how-it-works',
 		type: 'primary',
-		page: <About />,
-		name: 'About',
-		path: '/about',
+		page: <HowItWorks />,
+		name: 'How It Works',
+		path: '/how-it-works',
 	},
 	{
 		id: 'faq',
