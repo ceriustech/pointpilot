@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from '../../global/components/Button/Button';
 import { routes } from '../../routes/Routes';
 
-const Guest = () => {
+const CreateSession = () => {
 	const [sessionCode, setSessionCode] = useState('');
 	const [username, setUsername] = useState('');
 	const [usernameColor, setUsernameColor] = useState('');
@@ -81,4 +81,4 @@ const Guest = () => {
 	);
 };
 
-export default Guest;
+export default CreateSession;
