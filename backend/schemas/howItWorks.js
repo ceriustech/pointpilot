@@ -4,14 +4,16 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'heading',
-      title: 'Heading',
-      type: 'string',
+      name: 'host',
+      title: 'Host',
+      type: 'boolean',
+      initialValue: false,
     },
     {
-      name: 'subHeading',
-      title: 'SubHeading',
-      type: 'string',
+      name: 'guest',
+      title: 'Guest',
+      type: 'boolean',
+      initialValue: false,
     },
     {
       name: 'title',
