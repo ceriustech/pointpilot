@@ -3,7 +3,7 @@ import Button from '../../global/components/Button/Button';
 import { routes } from '../../routes/Routes';
 
 const Home = () => {
-	const path = routes[4].path;
+	const path = routes[3].path;
 
 	return (
 		<div>
