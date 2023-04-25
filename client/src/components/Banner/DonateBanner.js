@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Donate = () => {
+const DonateBanner = () => {
 	return <div>Donate</div>;
 };
 
-export default Donate;
+export default DonateBanner;

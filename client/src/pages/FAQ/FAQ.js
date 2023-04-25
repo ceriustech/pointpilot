@@ -1,7 +1,13 @@
-import React from 'react';
+import Collapsible from '../../components/Collapsible/CollapsibleContainer';
 
-const FAQ = () => {
-	return <div>FAQ</div>;
+const Faq = () => {
+	return (
+		<>
+			<section>
+				<Collapsible />
+			</section>
+		</>
+	);
 };
 
-export default FAQ;
+export default Faq;

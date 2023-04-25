@@ -1,7 +1,6 @@
 import Home from '../pages/Home';
 import HowItWorks from '../pages/HowItWorks';
 import Faq from '../pages/FAQ';
-import Donate from '../pages/Donate';
 import CreateSession from '../pages/CreateSession';
 import Session from '../components/Session';
 
@@ -26,13 +25,6 @@ export const routes = [
 		page: <Faq />,
 		name: 'FAQ',
 		path: '/faq',
-	},
-	{
-		id: 'donate',
-		type: 'primary',
-		page: <Donate />,
-		name: 'Donate',
-		path: '/donate',
 	},
 	{
 		id: 'craate-session',
