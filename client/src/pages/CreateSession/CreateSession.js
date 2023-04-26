@@ -9,7 +9,10 @@ const CreateSession = () => {
 	const [usernameIcon, setUsernameIcon] = useState('');
 
 	function updatePath(id) {
-		const path = routes[4].path.replace('id', id);
+		const getSessionRoute = routes.find((route) => route.path.includes('id'));
+		const path = getSessionRoute
+			? getSessionRoute.path.replace('id', id)
+			: getSessionRoute.path;
 
 		return path;
 	}
