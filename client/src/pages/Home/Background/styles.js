@@ -10,7 +10,7 @@ const moveClouds = keyframes`
 `;
 
 export const CloudContainer = styled.div`
-	height: 100vh;
+	height: 100%;
 	background: #c9dbe9;
 	background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
 	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
@@ -67,7 +67,7 @@ export const Cloud2 = styled(Cloud)`
 
 export const Cloud3 = styled(Cloud)`
 	left: -250px;
-	top: -200px;
+	top: 250px;
 	transform: scale(0.8);
 	opacity: 0.8;
 	animation: ${moveClouds} 20s linear infinite;
@@ -75,7 +75,7 @@ export const Cloud3 = styled(Cloud)`
 
 export const Cloud4 = styled(Cloud)`
 	left: 470px;
-	top: -250px;
+	top: 50px;
 	transform: scale(0.75);
 	opacity: 0.75;
 	animation: ${moveClouds} 18s linear infinite;

@@ -8,7 +8,7 @@ import {
 	Cloud5,
 } from './styles';
 
-const Background = () => {
+const Background = ({ children }) => {
 	return (
 		<CloudContainer>
 			<Cloud1 />
@@ -16,6 +16,7 @@ const Background = () => {
 			<Cloud3 />
 			<Cloud4 />
 			<Cloud5 />
+			{children}
 		</CloudContainer>
 	);
 };

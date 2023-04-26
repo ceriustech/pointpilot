@@ -12,12 +12,13 @@ const Home = () => {
 
 	return (
 		<Container>
-			<Background />
-			<h1>Estimate agile development issues with PointPilot</h1>
-			<p>
-				Make sprint planning easy and help streamline your development process
-			</p>
-			<Button text={'Get started'} route={path} />
+			<Background>
+				<h1>Estimate agile development issues with PointPilot</h1>
+				<p>
+					Make sprint planning easy and help streamline your development process
+				</p>
+				<Button text={'Get started'} route={path} />
+			</Background>
 		</Container>
 	);
 };
