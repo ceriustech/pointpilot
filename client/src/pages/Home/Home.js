@@ -1,7 +1,14 @@
 import React from 'react';
 import Button from '../../global/components/Button/Button';
 import { routes } from '../../routes/Routes';
-import { Container } from './styles';
+import {
+	Container,
+	ContentWrapper,
+	TextContent,
+	Heading,
+	SubHeading,
+	ImageWrapper,
+} from './styles';
 import Background from './Background';
 
 const Home = () => {
@@ -13,12 +20,18 @@ const Home = () => {
 	return (
 		<Container>
 			<Background>
-				<h1>Estimate agile development issues with PointPilot</h1>
-				<p>
-					Make sprint planning easy and help streamline your development process
-				</p>
-				<Button text={'Get started'} route={path} />
+				<ContentWrapper>
+					<TextContent>
+						<Heading>Estimate agile development issues with PointPilot</Heading>
+						<SubHeading>
+							Make sprint planning easy and help streamline your development
+							process
+						</SubHeading>
+					</TextContent>
+					<Button text={'Get started'} route={path} />
+				</ContentWrapper>
 			</Background>
+			
 		</Container>
 	);
 };

@@ -6,6 +6,7 @@ import {
 	Cloud3,
 	Cloud4,
 	Cloud5,
+	TextWrapper,
 } from './styles';
 
 const Background = ({ children }) => {
@@ -16,7 +17,7 @@ const Background = ({ children }) => {
 			<Cloud3 />
 			<Cloud4 />
 			<Cloud5 />
-			{children}
+			<TextWrapper>{children}</TextWrapper>
 		</CloudContainer>
 	);
 };

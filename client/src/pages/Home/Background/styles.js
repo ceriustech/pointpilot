@@ -63,6 +63,7 @@ export const Cloud2 = styled(Cloud)`
 	transform: scale(0.6);
 	opacity: 0.6;
 	animation: ${moveClouds} 25s linear infinite;
+	z-index: 1;
 `;
 
 export const Cloud3 = styled(Cloud)`
@@ -71,6 +72,7 @@ export const Cloud3 = styled(Cloud)`
 	transform: scale(0.8);
 	opacity: 0.8;
 	animation: ${moveClouds} 20s linear infinite;
+	z-index: 1;
 `;
 
 export const Cloud4 = styled(Cloud)`
@@ -79,6 +81,7 @@ export const Cloud4 = styled(Cloud)`
 	transform: scale(0.75);
 	opacity: 0.75;
 	animation: ${moveClouds} 18s linear infinite;
+	z-index: 1;
 `;
 
 export const Cloud5 = styled(Cloud)`
@@ -87,4 +90,10 @@ export const Cloud5 = styled(Cloud)`
 	transform: scale(0.8);
 	opacity: 0.8;
 	animation: ${moveClouds} 20s linear infinite;
+	z-index: 1;
+`;
+
+export const TextWrapper = styled.div`
+	position: relative;
+	z-index: 2;
 `;
