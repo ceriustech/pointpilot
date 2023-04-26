@@ -10,6 +10,8 @@ import {
 	ImageWrapper,
 } from './styles';
 import Background from './Background';
+import Plane from './Plane';
+// import img from '../../assets/images/point-pilot-2.jpeg';
 
 const Home = () => {
 	const createSessionRoute = routes.find((route) =>
@@ -18,20 +20,22 @@ const Home = () => {
 	const path = createSessionRoute ? createSessionRoute.path : '/';
 
 	return (
-		<Container>
+		<Container id="home">
 			<Background>
-				<ContentWrapper>
+				<ContentWrapper id="content">
 					<TextContent>
-						<Heading>Estimate agile development issues with PointPilot</Heading>
+						<Heading>Collaborate with PointPilot</Heading>
 						<SubHeading>
 							Make sprint planning easy and help streamline your development
 							process
 						</SubHeading>
+						<Button text={'Get started'} route={path} />
 					</TextContent>
-					<Button text={'Get started'} route={path} />
+					<ImageWrapper>
+						<Plane />
+					</ImageWrapper>
 				</ContentWrapper>
 			</Background>
-			
 		</Container>
 	);
 };

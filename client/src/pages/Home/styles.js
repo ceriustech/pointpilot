@@ -5,9 +5,13 @@ export const Container = styled.div`
 	height: 100vh;
 `;
 
-export const ContentWrapper = styled.div``;
+export const ContentWrapper = styled.div`
+	display: flex;
+`;
 
-export const TextContent = styled.div``;
+export const TextContent = styled.div`
+	flex-basis: 50%;
+`;
 
 export const Heading = styled.h1`
 	color: red;
@@ -18,4 +22,8 @@ export const SubHeading = styled.p`
 	z-index: 2;
 `;
 
-export const ImageWrapper = styled.div``;
+export const ImageWrapper = styled.div`
+	flex-basis: 50%;
+`;
+
+export const Image = styled.img``;

@@ -12,7 +12,7 @@ const moveClouds = keyframes`
 export const CloudContainer = styled.div`
 	height: 100%;
 	background: #c9dbe9;
-	background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #87b0dc 0%, #fff 100%);
 	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
 	background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
 `;
