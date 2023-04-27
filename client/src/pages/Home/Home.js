@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../../global/components/Button/Button';
 import { routes } from '../../routes/Routes';
 import {
@@ -11,13 +11,23 @@ import {
 } from './styles';
 import Background from './Background';
 import Plane from './Plane';
-// import img from '../../assets/images/point-pilot-2.jpeg';
+import getSanityData from '../../Utility/Functions/sanityProvider';
 
 const Home = () => {
+	const [homeData, setHomeData] = useState([]);
+
 	const createSessionRoute = routes.find((route) =>
 		route.path.includes('create-session')
 	);
+
 	const path = createSessionRoute ? createSessionRoute.path : '/';
+
+	useEffect(() => {
+		return getSanityData('home', setHomeData);
+	}, []);
+
+	console.log('%cHOME DATA', 'font-size:2em;color:red');
+	console.log(homeData);
 
 	return (
 		<Container id="home">
