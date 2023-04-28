@@ -23,22 +23,26 @@ const Home = () => {
 	const path = createSessionRoute ? createSessionRoute.path : '/';
 
 	useEffect(() => {
-		return getSanityData('home', setHomeData);
+		async function fetchData() {
+			const data = await getSanityData('home');
+			setHomeData(data);
+		}
+
+		fetchData();
 	}, []);
 
 	console.log('%cHOME DATA', 'font-size:2em;color:red');
-	console.log(homeData);
+	console.log(homeData[0]);
+
+	const { heading, subHeading } = homeData[0] || {};
 
 	return (
 		<Container id="home">
 			<Background>
 				<ContentWrapper id="content">
 					<TextContent>
-						<Heading>Collaborate with PointPilot</Heading>
-						<SubHeading>
-							Make sprint planning easy and help streamline your development
-							process
-						</SubHeading>
+						<Heading>{heading}</Heading>
+						<SubHeading>{subHeading}</SubHeading>
 						<Button text={'Get started'} route={path} />
 					</TextContent>
 					<ImageWrapper>

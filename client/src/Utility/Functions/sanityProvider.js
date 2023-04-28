@@ -1,13 +1,11 @@
 import { client } from '../../client';
 
-export default function getSanityData(data, setState) {
-	const query = `[_type == ${data}]`;
+export default async function getSanityData(data) {
+	const query = `*[_type == "${data}"]`;
 
 	try {
-		client.fetch(query).then((data) => {
-			const sanityData = data;
-			return setState(sanityData);
-		});
+		const sanityData = await client.fetch(query);
+		return sanityData;
 	} catch (err) {
 		console.error(err);
 		return [];
