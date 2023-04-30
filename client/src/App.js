@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './global/components/Header';
 import Footer from './global/components/Footer';
-import NavigationContainer from './global/components/Navigation/NavigationContainer';
 import { Routes, Route } from 'react-router-dom';
 import { routes } from './routes/Routes';
 
@@ -12,9 +11,7 @@ const Pages = routes.map(({ path, page }, key) => (
 function App() {
 	return (
 		<div className="App">
-			<Header>
-				<NavigationContainer />
-			</Header>
+			<Header />
 			<Routes>{Pages}</Routes>
 			<Footer />
 		</div>

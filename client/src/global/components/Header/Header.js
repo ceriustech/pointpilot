@@ -3,7 +3,7 @@ import NavigationContainer from '../Navigation/NavigationContainer';
 
 const Header = () => {
 	return (
-		<div>
+		<div id="header">
 			<NavigationContainer />
 		</div>
 	);
