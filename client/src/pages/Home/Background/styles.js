@@ -24,6 +24,7 @@ const CloudContainer = styled.div`
 	background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
 	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
 	background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+	overflow: hidden;
 `;
 
 const Cloud = styled.div`
