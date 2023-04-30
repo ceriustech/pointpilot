@@ -1,24 +1,43 @@
 import React from 'react';
 import {
-	CloudContainer,
-	Cloud1,
-	Cloud2,
-	Cloud3,
-	Cloud4,
-	Cloud5,
+	BackgroundContainer,
+	Cloud,
+	CloudLarge,
+	CloudNormal,
+	CloudSmall,
+	CloudTiny,
 	TextWrapper,
 } from './styles';
 
 const Background = ({ children }) => {
 	return (
-		<CloudContainer>
-			<Cloud1 />
-			<Cloud2 />
-			<Cloud3 />
-			<Cloud4 />
-			<Cloud5 />
+		<BackgroundContainer>
+			<CloudLarge className="cloud large cloud-1">
+				<Cloud />
+				<Cloud />
+				<Cloud />
+				<Cloud />
+			</CloudLarge>
+			<CloudNormal className="cloud normal cloud-2">
+				<Cloud />
+				<Cloud />
+				<Cloud />
+				<Cloud />
+			</CloudNormal>
+			<CloudSmall className="cloud small cloud-3">
+				<Cloud />
+				<Cloud />
+				<Cloud />
+				<Cloud />
+			</CloudSmall>
+			<CloudTiny className="cloud tiny cloud-4">
+				<Cloud />
+				<Cloud />
+				<Cloud />
+				<Cloud />
+			</CloudTiny>
 			<TextWrapper>{children}</TextWrapper>
-		</CloudContainer>
+		</BackgroundContainer>
 	);
 };
 
