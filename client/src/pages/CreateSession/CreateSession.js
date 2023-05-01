@@ -14,8 +14,6 @@ const CreateSession = () => {
 
 		if (getSessionRoute.length > 0) {
 			path = getSessionRoute.path.replace('id', id);
-		} else {
-
 		}
 
 		return path;
