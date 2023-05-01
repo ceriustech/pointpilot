@@ -2,7 +2,7 @@ import Home from '../pages/Home';
 import HowItWorks from '../pages/HowItWorks';
 import Faq from '../pages/FAQ';
 import CreateSession from '../pages/CreateSession';
-import Session from '../components/Session';
+import Session from '../pages/Session';
 
 export const routes = [
 	{
