@@ -59,8 +59,14 @@ const HostCreateSession = () => {
 			alert(JSON.stringify(values, null, 2));
 		},
 	});
+
+	const isSessionCodeGenerated = sessionCode !== '';
+
 	return (
-		<form onSubmit={formik.handleSubmit}>
+		<form
+			onSubmit={formik.handleSubmit}
+			style={{ display: 'flex', flexDirection: 'column' }}
+		>
 			<label htmlFor="sessionName">Session Name</label>
 			<input
 				id="session-name"
@@ -106,8 +112,6 @@ const HostCreateSession = () => {
 				route={updatePath(sessionCode)}
 				disable={!isSessionCodeGenerated}
 			/>
-
-			<button type="submit">Submit</button>
 		</form>
 	);
 };
