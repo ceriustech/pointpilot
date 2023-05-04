@@ -34,8 +34,6 @@ const CreateSession = () => {
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		// logic to calculate the average value of checked fibonacci checkboxes
-		// and link it to the sessionId
 	}
 
 	const isSessionCodeGenerated = sessionCode !== '';
