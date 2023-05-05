@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../../../global/components/Button/Button';
 import { useFormik } from 'formik';
 import { routes } from '../../../../routes/Routes';
@@ -6,40 +7,29 @@ import { routes } from '../../../../routes/Routes';
 const validate = (values) => {
 	const errors = {};
 
-	if (!values.firstName) {
-		errors.firstName = 'Required';
-	} else if (values.firstName.length > 15) {
-		errors.firstName = 'Must be 15 characters or less';
+	if (!values.userName) {
+		errors.userName = 'Required';
+	} else if (values.userName.length > 15) {
+		errors.userName = 'Must be 15 characters or less';
 	}
-
-	if (!values.lastName) {
-		errors.lastName = 'Required';
-	} else if (values.lastName.length > 20) {
-		errors.lastName = 'Must be 20 characters or less';
-	}
-
-	if (!values.email) {
-		errors.email = 'Required';
-	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-		errors.email = 'Invalid email address';
-	}
-
 	return errors;
 };
 
 const HostCreateSession = () => {
 	const [sessionCode, setSessionCode] = useState('');
 	const [usernameColor, setUsernameColor] = useState('');
-	const [usernameIcon, setUsernameIcon] = useState('');
+	const [usernameIcon, setUsernameIcon] = useState('#000000');
+
+	const navigate = useNavigate();
 
 	function updatePath(id) {
-		const getSessionRoute =
-			routes.find((route) => route.path.includes('id')) || [];
+		const getSessionRoute = routes.find((route) => route.path.includes('id'));
 		let path = getSessionRoute.path;
 
-		if (getSessionRoute.length > 0) {
+		if (getSessionRoute) {
 			path = getSessionRoute.path.replace('id', id);
 		}
+		console.log('path', path);
 
 		return path;
 	}
@@ -56,63 +46,72 @@ const HostCreateSession = () => {
 		},
 		validate,
 		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
+			if (isSessionCodeGenerated) {
+				navigate(updatePath(sessionCode));
+			}
 		},
 	});
+
+	console.log('ERRORS', formik.errors);
 
 	const isSessionCodeGenerated = sessionCode !== '';
 
 	return (
-		<form
-			onSubmit={formik.handleSubmit}
-			style={{ display: 'flex', flexDirection: 'column' }}
-		>
-			<label htmlFor="sessionName">Session Name</label>
-			<input
-				id="session-name"
-				name="sessionName"
-				type="text"
-				onChange={formik.handleChange}
-				onBlur={formik.handleBlur}
-				value={formik.values.sessionName}
-			/>
-			{formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
+		<>
+			<form
+				onSubmit={formik.handleSubmit}
+				style={{ display: 'flex', flexDirection: 'column' }}
+			>
+				<label htmlFor="sessionName">Session Name</label>
+				<input
+					id="session-name"
+					name="sessionName"
+					type="text"
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+					value={formik.values.sessionName}
+				/>
 
-			<label htmlFor="userName">User Name</label>
-			<input
-				id="user-name"
-				name="userName"
-				type="text"
-				onChange={formik.handleChange}
-				onBlur={formik.handleBlur}
-				value={formik.values.userName}
-			/>
-			{formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
-			<label htmlFor="username-color">Username Color:</label>
-			<input
-				type="color"
-				id="username-color"
-				value={usernameColor}
-				onChange={(event) => setUsernameColor(event.target.value)}
-			/>
-			<label htmlFor="username-icon">Username Icon:</label>
-			<input
-				type="file"
-				id="username-icon"
-				onChange={(event) =>
-					setUsernameIcon(URL.createObjectURL(event.target.files[0]))
-				}
-			/>
+				<label htmlFor="userName">User Name</label>
+				<input
+					id="user-name"
+					name="userName"
+					type="text"
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+					value={formik.values.userName}
+				/>
+				{formik.errors.userName ? <div>{formik.errors.userName}</div> : null}
+
+				<label htmlFor="username-color">Username Color:</label>
+				<input
+					type="color"
+					id="username-color"
+					value={usernameColor}
+					onChange={(event) => setUsernameColor(event.target.value)}
+				/>
+
+				<label htmlFor="username-icon">Username Icon:</label>
+				<input
+					type="file"
+					id="username-icon"
+					onChange={(event) =>
+						setUsernameIcon(URL.createObjectURL(event.target.files[0]))
+					}
+				/>
+			</form>
 			<div>
 				<Button fn={handleSessionCode} text={'Generate Session Code'} />
 				<p>Session Code: {sessionCode}</p>
 			</div>
-			<Button
-				text={'Create session'}
-				route={updatePath(sessionCode)}
-				disable={!isSessionCodeGenerated}
-			/>
-		</form>
+			<div>
+				<Button
+					text={'Create session'}
+					disable={!isSessionCodeGenerated}
+					route={updatePath(sessionCode)}
+				/>
+			</div>
+		</>
 	);
 };
 
