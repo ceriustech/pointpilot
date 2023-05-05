@@ -15,24 +15,30 @@ const validate = (values) => {
 	return errors;
 };
 
+function disableButton(session, userNameValue, userNameError) {
+	if (session === '' || userNameValue === '' || userNameError) {
+		return true;
+	}
+	return false;
+}
+
+function updatePath(id) {
+	const getSessionRoute = routes.find((route) => route.path.includes('id'));
+	let path = getSessionRoute.path;
+
+	if (getSessionRoute) {
+		path = getSessionRoute.path.replace('id', id);
+	}
+
+	return path;
+}
+
 const HostCreateSession = () => {
 	const [sessionCode, setSessionCode] = useState('');
 	const [usernameColor, setUsernameColor] = useState('');
 	const [usernameIcon, setUsernameIcon] = useState('#000000');
 
 	const navigate = useNavigate();
-
-	function updatePath(id) {
-		const getSessionRoute = routes.find((route) => route.path.includes('id'));
-		let path = getSessionRoute.path;
-
-		if (getSessionRoute) {
-			path = getSessionRoute.path.replace('id', id);
-		}
-		console.log('path', path);
-
-		return path;
-	}
 
 	function handleSessionCode() {
 		const code = Math.random().toString(36).substring(2, 8);
@@ -46,15 +52,14 @@ const HostCreateSession = () => {
 		},
 		validate,
 		onSubmit: (values) => {
-			if (isSessionCodeGenerated) {
+			if (disableButton(sessionCode, formik.errors.userName)) {
 				navigate(updatePath(sessionCode));
 			}
 		},
 	});
 
-	console.log('ERRORS', formik.errors);
-
-	const isSessionCodeGenerated = sessionCode !== '';
+	console.log('%cISVALID', 'font-size:2em;color:red');
+	console.log(disableButton(sessionCode, formik.values.userName));
 
 	return (
 		<>
@@ -107,7 +112,11 @@ const HostCreateSession = () => {
 			<div>
 				<Button
 					text={'Create session'}
-					disable={!isSessionCodeGenerated}
+					disable={disableButton(
+						sessionCode,
+						formik.values.userName,
+						formik.errors.userName
+					)}
 					route={updatePath(sessionCode)}
 				/>
 			</div>
