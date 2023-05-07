@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Button from '../../../../global/components/Button/Button';
 import { useFormik } from 'formik';
 import { routes } from '../../../../routes/Routes';
@@ -44,8 +43,6 @@ const HostCreateSession = () => {
 	console.log('%cSESSION PROVIDER', 'font-size:2em;color:red');
 	console.log(setSessionData);
 
-	const navigate = useNavigate();
-
 	function handleSessionCode() {
 		const code = Math.random().toString(36).substring(2, 8);
 		setSessionCode(code);
@@ -65,7 +62,6 @@ const HostCreateSession = () => {
 				usernameIcon: userNameIcon,
 				sessionId: sessionCode,
 			});
-			navigate(updatePath(sessionCode));
 		},
 	});
 
@@ -124,7 +120,7 @@ const HostCreateSession = () => {
 						route={updatePath(sessionCode)}
 						type="submit"
 					/>
-				</div>{' '}
+				</div>
 			</form>
 		</>
 	);
