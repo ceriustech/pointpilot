@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Button from '../../../../global/components/Button/Button';
 import { useFormik } from 'formik';
 import { routes } from '../../../../routes/Routes';
@@ -35,8 +35,8 @@ function updatePath(id) {
 
 const HostCreateSession = () => {
 	const [sessionCode, setSessionCode] = useState('');
-	const [userNameColor, setUsernameColor] = useState('');
-	const [userNameIcon, setUsernameIcon] = useState('#000000');
+	const [userNameColor, setUserNameColor] = useState('#000000');
+	const [userNameIcon, setUsernameIcon] = useState('');
 
 	const { setSessionData } = useContext(AppContext);
 
@@ -52,18 +52,23 @@ const HostCreateSession = () => {
 		initialValues: {
 			sessionName: '',
 			userName: '',
+			usernameColor: userNameColor,
 		},
 		validate,
 		onSubmit: (values) => {
 			setSessionData({
 				sessionName: values.sessionName,
 				userName: values.userName,
-				usernameColor: userNameColor,
+				usernameColor: values.usernameColor,
 				usernameIcon: userNameIcon,
 				sessionId: sessionCode,
 			});
 		},
 	});
+
+	useEffect(() => {
+		formik.setFieldValue('usernameColor', userNameColor);
+	}, [userNameColor]);
 
 	return (
 		<>
@@ -95,7 +100,7 @@ const HostCreateSession = () => {
 					type="color"
 					id="username-color"
 					value={userNameColor}
-					onChange={(event) => setUsernameColor(event.target.value)}
+					onChange={(event) => setUserNameColor(event.target.value)}
 				/>
 				<label htmlFor="username-icon">Username Icon:</label>
 				<input

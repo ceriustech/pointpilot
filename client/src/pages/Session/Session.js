@@ -10,7 +10,7 @@ const Session = () => {
 	console.log('%cSESSION DATA', 'font-size:2em;color:orange');
 	console.log(sessionData);
 
-	const { sessionId, sessionName, userName, userNameColor, userNameIcon } =
+	const { sessionId, sessionName, userName, usernameColor, userNameIcon } =
 		sessionData;
 
 	const handleSubmit = (event) => {
