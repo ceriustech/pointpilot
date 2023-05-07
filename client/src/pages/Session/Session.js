@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
 import AppContext from '../../contextProvider/AppContext';
+import Button from '../../global/components/Button/Button';
+import Date from '../../components/Date/Date';
 
 const fibonacci = [1, 2, 3, 5, 8, 13, 21, 34];
 
@@ -34,6 +36,7 @@ const Session = () => {
 					<div>
 						<p>{userName}</p>
 					</div>
+					<Date />
 					{fibonacci.map((value) => (
 						<div key={value}>
 							<input type="checkbox" id={`fib-${value}`} />
