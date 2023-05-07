@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../../global/components/Button/Button';
 import { useFormik } from 'formik';
 import { routes } from '../../../../routes/Routes';
+import AppContext from '../../../../contextProvider/AppContext';
 
 const validate = (values) => {
 	const errors = {};
@@ -35,8 +36,13 @@ function updatePath(id) {
 
 const HostCreateSession = () => {
 	const [sessionCode, setSessionCode] = useState('');
-	const [usernameColor, setUsernameColor] = useState('');
-	const [usernameIcon, setUsernameIcon] = useState('#000000');
+	const [userNameColor, setUsernameColor] = useState('');
+	const [userNameIcon, setUsernameIcon] = useState('#000000');
+
+	const { setSessionData } = useContext(AppContext);
+
+	console.log('%cSESSION PROVIDER', 'font-size:2em;color:red');
+	console.log(setSessionData);
 
 	const navigate = useNavigate();
 
@@ -52,14 +58,16 @@ const HostCreateSession = () => {
 		},
 		validate,
 		onSubmit: (values) => {
-			if (disableButton(sessionCode, formik.errors.userName)) {
-				navigate(updatePath(sessionCode));
-			}
+			setSessionData({
+				sessionName: values.sessionName,
+				userName: values.userName,
+				usernameColor: userNameColor,
+				usernameIcon: userNameIcon,
+				sessionId: sessionCode,
+			});
+			navigate(updatePath(sessionCode));
 		},
 	});
-
-	console.log('%cISVALID', 'font-size:2em;color:red');
-	console.log(disableButton(sessionCode, formik.values.userName));
 
 	return (
 		<>
@@ -76,7 +84,6 @@ const HostCreateSession = () => {
 					onBlur={formik.handleBlur}
 					value={formik.values.sessionName}
 				/>
-
 				<label htmlFor="userName">User Name</label>
 				<input
 					id="user-name"
@@ -87,15 +94,13 @@ const HostCreateSession = () => {
 					value={formik.values.userName}
 				/>
 				{formik.errors.userName ? <div>{formik.errors.userName}</div> : null}
-
 				<label htmlFor="username-color">Username Color:</label>
 				<input
 					type="color"
 					id="username-color"
-					value={usernameColor}
+					value={userNameColor}
 					onChange={(event) => setUsernameColor(event.target.value)}
 				/>
-
 				<label htmlFor="username-icon">Username Icon:</label>
 				<input
 					type="file"
@@ -104,22 +109,23 @@ const HostCreateSession = () => {
 						setUsernameIcon(URL.createObjectURL(event.target.files[0]))
 					}
 				/>
+				<div>
+					<Button fn={handleSessionCode} text={'Generate Session Code'} />
+					<p>Session Code: {sessionCode}</p>
+				</div>
+				<div>
+					<Button
+						text={'Create session'}
+						disable={disableButton(
+							sessionCode,
+							formik.values.userName,
+							formik.errors.userName
+						)}
+						route={updatePath(sessionCode)}
+						type="submit"
+					/>
+				</div>{' '}
 			</form>
-			<div>
-				<Button fn={handleSessionCode} text={'Generate Session Code'} />
-				<p>Session Code: {sessionCode}</p>
-			</div>
-			<div>
-				<Button
-					text={'Create session'}
-					disable={disableButton(
-						sessionCode,
-						formik.values.userName,
-						formik.errors.userName
-					)}
-					route={updatePath(sessionCode)}
-				/>
-			</div>
 		</>
 	);
 };

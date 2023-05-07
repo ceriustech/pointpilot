@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './global/components/Header';
 import Footer from './global/components/Footer';
+import SessionManager from './contextProvider/SessionManager/SessionManager';
 import { Routes, Route } from 'react-router-dom';
 import { routes } from './routes/Routes';
 
@@ -10,11 +11,13 @@ const Pages = routes.map(({ path, page }, key) => (
 
 function App() {
 	return (
-		<div className="App">
-			<Header />
-			<Routes>{Pages}</Routes>
-			<Footer />
-		</div>
+		<SessionManager>
+			<div className="App">
+				<Header />
+				<Routes>{Pages}</Routes>
+				<Footer />
+			</div>
+		</SessionManager>
 	);
 }
 
