@@ -31,9 +31,6 @@ const Home = () => {
 		fetchData();
 	}, []);
 
-	console.log('%cHOME DATA', 'font-size:2em;color:red');
-	console.log(homeData[0]);
-
 	const { heading, subHeading } = homeData[0] || {};
 
 	return (

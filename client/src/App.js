@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './global/components/Header';
 import Footer from './global/components/Footer';
-import SessionManager from './contextProvider/SessionManager/SessionManager';
+import SessionManager from './contextProvider/SessionManager';
 import { Routes, Route } from 'react-router-dom';
 import { routes } from './routes/Routes';
 

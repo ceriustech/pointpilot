@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import Scrollable from '../../../Scrollable/Scrollable';
 import Button from '../../../../global/components/Button/Button';
 import { useFormik } from 'formik';
 import { routes } from '../../../../routes/Routes';
@@ -36,7 +37,8 @@ function updatePath(id) {
 const HostCreateSession = () => {
 	const [sessionCode, setSessionCode] = useState('');
 	const [userNameColor, setUserNameColor] = useState('#000000');
-	const [userNameIcon, setUsernameIcon] = useState('');
+	const [selectedIcon, setSelectedIcon] = useState(null);
+	const [showIcons, setShowIcons] = useState(false);
 
 	const { setSessionData } = useContext(AppContext);
 
@@ -46,6 +48,10 @@ const HostCreateSession = () => {
 	function handleSessionCode() {
 		const code = Math.random().toString(36).substring(2, 8);
 		setSessionCode(code);
+	}
+
+	function handleIconSelection(icon) {
+		setSelectedIcon(icon);
 	}
 
 	const formik = useFormik({
@@ -60,7 +66,7 @@ const HostCreateSession = () => {
 				sessionName: values.sessionName,
 				userName: values.userName,
 				usernameColor: values.usernameColor,
-				usernameIcon: userNameIcon,
+				usernameIcon: selectedIcon,
 				sessionId: sessionCode,
 			});
 		},
@@ -102,14 +108,8 @@ const HostCreateSession = () => {
 					value={userNameColor}
 					onChange={(event) => setUserNameColor(event.target.value)}
 				/>
-				<label htmlFor="username-icon">Username Icon:</label>
-				<input
-					type="file"
-					id="username-icon"
-					onChange={(event) =>
-						setUsernameIcon(URL.createObjectURL(event.target.files[0]))
-					}
-				/>
+				{/* <Button fn={setShowIcons(!showIcons)} text={'Select a user icon'} /> */}
+				<Scrollable handleIconSelection={handleIconSelection} />
 				<div>
 					<Button fn={handleSessionCode} text={'Generate Session Code'} />
 					<p>Session Code: {sessionCode}</p>
