@@ -17,11 +17,11 @@ const Icon = ({ handleIconSelection }) => {
 	console.log('ICONS', icons);
 
 	return (
-		<div>
+		<div style={{ cursor: 'pointer' }}>
 			{icons.map((icon) => (
 				<img
 					key={icon._id}
-					src={icon.image}
+					src={urlFor(icon.image)}
 					alt={icon.description}
 					width="40"
 					height="40"
