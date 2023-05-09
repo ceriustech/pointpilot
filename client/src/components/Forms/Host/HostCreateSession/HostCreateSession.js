@@ -43,7 +43,7 @@ const HostCreateSession = () => {
 	const { setSessionData } = useContext(AppContext);
 
 	console.log('%cSESSION PROVIDER', 'font-size:2em;color:red');
-	console.log(setSessionData);
+	console.log(selectedIcon);
 
 	function handleSessionCode() {
 		const code = Math.random().toString(36).substring(2, 8);

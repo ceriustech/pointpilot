@@ -14,15 +14,13 @@ const Icon = ({ handleIconSelection }) => {
 		fetchData();
 	}, []);
 
-	console.log('ICONS', icons);
-
 	return (
 		<div style={{ cursor: 'pointer' }}>
 			{icons.map((icon) => (
 				<img
 					key={icon._id}
 					src={urlFor(icon.image)}
-					alt={icon.description}
+					alt={icon.altText}
 					width="40"
 					height="40"
 					onClick={handleIconSelection(icon)}

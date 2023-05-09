@@ -37,7 +37,12 @@ const Session = () => {
 			<form onSubmit={handleSubmit}>
 				<div>
 					<div>
-						<img src={urlFor(usernameIcon.image)} width="40" height="40" />
+						<img
+							src={urlFor(usernameIcon.image)}
+							alt={usernameIcon.altText}
+							width="40"
+							height="40"
+						/>
 						<p style={{ color: `${usernameColor}` }}>{userName}</p>
 					</div>
 					<Date />

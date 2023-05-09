@@ -16,5 +16,10 @@ export default {
         hotspot: true,
       },
     },
+    {
+      name: 'altText',
+      title: 'Alt Text',
+      type: 'string',
+    },
   ],
 }
