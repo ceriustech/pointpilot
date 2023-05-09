@@ -51,7 +51,9 @@ const HostCreateSession = () => {
 	}
 
 	function handleIconSelection(icon) {
-		setSelectedIcon(icon);
+		return () => {
+			setSelectedIcon(icon);
+		};
 	}
 
 	function handleIconRendering() {
