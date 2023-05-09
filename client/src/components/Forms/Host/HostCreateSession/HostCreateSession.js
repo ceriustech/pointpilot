@@ -13,6 +13,7 @@ const validate = (values) => {
 	} else if (values.userName.length > 15) {
 		errors.userName = 'Must be 15 characters or less';
 	}
+
 	return errors;
 };
 
@@ -39,15 +40,20 @@ const HostCreateSession = () => {
 	const [userNameColor, setUserNameColor] = useState('#000000');
 	const [selectedIcon, setSelectedIcon] = useState(null);
 	const [showIcons, setShowIcons] = useState(false);
+	const [isSessionCodeValid, setIsSessionCodeValid] = useState(false);
 
 	const { setSessionData } = useContext(AppContext);
-
-	console.log('%cSESSION PROVIDER', 'font-size:2em;color:red');
-	console.log(selectedIcon);
 
 	function handleSessionCode() {
 		const code = Math.random().toString(36).substring(2, 8);
 		setSessionCode(code);
+
+		// If the session code is not empty, mark it as valid
+		if (code !== '') {
+			setIsSessionCodeValid(true);
+		} else {
+			setIsSessionCodeValid(false);
+		}
 	}
 
 	function handleIconSelection(icon) {
@@ -119,6 +125,7 @@ const HostCreateSession = () => {
 				<div>
 					<Button fn={handleSessionCode} text={'Generate Session Code'} />
 					<p>Session Code: {sessionCode}</p>
+					{!isSessionCodeValid && <div>Required</div>}
 				</div>
 				<div>
 					<Button
