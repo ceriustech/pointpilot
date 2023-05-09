@@ -2,16 +2,18 @@ import React, { useState, useContext } from 'react';
 import AppContext from '../../contextProvider/AppContext';
 import Button from '../../global/components/Button/Button';
 import Date from '../../components/Date/Date';
+import { urlFor } from '../../client';
 
 const fibonacci = [1, 2, 3, 5, 8, 13, 21, 34];
 
 const Session = () => {
 	const { sessionData } = useContext(AppContext);
+
+	const { sessionId, sessionName, userName, usernameColor, usernameIcon } =
+		sessionData;
+
 	console.log('%cSESSION DATA', 'font-size:2em;color:orange');
 	console.log(sessionData);
-
-	const { sessionId, sessionName, userName, usernameColor, userNameIcon } =
-		sessionData;
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -22,6 +24,7 @@ const Session = () => {
 	return (
 		<div>
 			<div>
+				{sessionName && <p>{sessionName}</p>}
 				<p>Host Name: {userName}</p>
 			</div>
 
@@ -34,7 +37,8 @@ const Session = () => {
 			<form onSubmit={handleSubmit}>
 				<div>
 					<div>
-						<p>{userName}</p>
+						<img src={urlFor(usernameIcon.image)} width="40" height="40" />
+						<p style={{ color: `${usernameColor}` }}>{userName}</p>
 					</div>
 					<Date />
 					{fibonacci.map((value) => (
