@@ -5,9 +5,8 @@ import FibonacciPointer from '../../global/components/FibonacciPointer';
 import Date from '../../components/Date/Date';
 import { urlFor } from '../../client';
 
-const fibonacci = [1, 2, 3, 5, 8, 13, 21, 34];
-
 const Session = () => {
+	const [selectedFibonacci, setSelectedFibonacci] = useState(0);
 	const { sessionData } = useContext(AppContext);
 
 	const { sessionId, sessionName, userName, usernameColor, usernameIcon } =
@@ -16,11 +15,18 @@ const Session = () => {
 	console.log('%cSESSION DATA', 'font-size:2em;color:orange');
 	console.log(sessionData);
 
-	const handleSubmit = (event) => {
+	function handleFibonacciChange(value) {
+		setSelectedFibonacci(value);
+	}
+
+	console.log('%cSELECTED FIB DATA', 'font-size:2em;color:yellow');
+	console.log(selectedFibonacci);
+
+	function handleSubmit(event) {
 		event.preventDefault();
 		// logic to calculate the average value of checked fibonacci checkboxes
 		// and link it to the sessionId
-	};
+	}
 
 	return (
 		<div>
@@ -49,7 +55,7 @@ const Session = () => {
 						)}
 						<p style={{ color: `${usernameColor}` }}>{userName}</p>
 					</div>
-					<FibonacciPointer />
+					<FibonacciPointer onSelectionChange={handleFibonacciChange} />
 				</div>
 				<button type="submit">Submit</button>
 			</form>
