@@ -54,6 +54,10 @@ const HostCreateSession = () => {
 		setSelectedIcon(icon);
 	}
 
+	function handleIconRendering() {
+		setShowIcons(!showIcons);
+	}
+
 	const formik = useFormik({
 		initialValues: {
 			sessionName: '',
@@ -108,8 +112,8 @@ const HostCreateSession = () => {
 					value={userNameColor}
 					onChange={(event) => setUserNameColor(event.target.value)}
 				/>
-				{/* <Button fn={setShowIcons(!showIcons)} text={'Select a user icon'} /> */}
-				<Scrollable handleIconSelection={handleIconSelection} />
+				<Button fn={handleIconRendering} text={'Select a user icon'} />
+				{showIcons && <Scrollable handleIconSelection={handleIconSelection} />}
 				<div>
 					<Button fn={handleSessionCode} text={'Generate Session Code'} />
 					<p>Session Code: {sessionCode}</p>
