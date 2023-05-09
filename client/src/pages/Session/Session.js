@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import AppContext from '../../contextProvider/AppContext';
 import Button from '../../global/components/Button/Button';
+import FibonacciPointer from '../../global/components/FibonacciPointer';
 import Date from '../../components/Date/Date';
 import { urlFor } from '../../client';
 
@@ -34,6 +35,7 @@ const Session = () => {
 			<div>
 				<p>Story ID:</p>
 			</div>
+			<Date />
 			<form onSubmit={handleSubmit}>
 				<div>
 					<div>
@@ -47,13 +49,7 @@ const Session = () => {
 						)}
 						<p style={{ color: `${usernameColor}` }}>{userName}</p>
 					</div>
-					<Date />
-					{fibonacci.map((value) => (
-						<div key={value}>
-							<input type="checkbox" id={`fib-${value}`} />
-							<label htmlFor={`fib-${value}`}>{value}</label>
-						</div>
-					))}
+					<FibonacciPointer />
 				</div>
 				<button type="submit">Submit</button>
 			</form>
