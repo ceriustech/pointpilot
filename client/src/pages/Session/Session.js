@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import AppContext from '../../contextProvider/AppContext';
+import { PointerCard } from './styles';
 import Button from '../../global/components/Button/Button';
 import FibonacciPointer from '../../global/components/FibonacciPointer';
 import Date from '../../components/Date/Date';
@@ -11,9 +12,6 @@ const Session = () => {
 
 	const { sessionId, sessionName, userName, usernameColor, usernameIcon } =
 		sessionData;
-
-	console.log('%cSESSION DATA', 'font-size:2em;color:orange');
-	console.log(sessionData);
 
 	function handleFibonacciChange(value) {
 		setSelectedFibonacci(value);
@@ -43,7 +41,7 @@ const Session = () => {
 			</div>
 			<Date />
 			<form onSubmit={handleSubmit}>
-				<div>
+				<PointerCard>
 					<div>
 						{usernameIcon && (
 							<img
@@ -56,7 +54,7 @@ const Session = () => {
 						<p style={{ color: `${usernameColor}` }}>{userName}</p>
 					</div>
 					<FibonacciPointer onSelectionChange={handleFibonacciChange} />
-				</div>
+				</PointerCard>
 				<button type="submit">Submit</button>
 			</form>
 

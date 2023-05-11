@@ -57,9 +57,10 @@ const HostCreateSession = () => {
 	}
 
 	function handleIconSelection(icon) {
-		return () => {
-			setSelectedIcon(icon);
-		};
+		setSelectedIcon(icon);
+		console.log('%cSELECED ICON DATA', 'font-size:2em;color:orange');
+		console.log('Icon selected: ', icon);
+		console.log('Type of icon: ', typeof icon);
 	}
 
 	function handleIconRendering() {
@@ -75,9 +76,9 @@ const HostCreateSession = () => {
 		validate,
 		onSubmit: (values) => {
 			setSessionData({
-				sessionName: values.sessionName,
-				userName: values.userName,
-				usernameColor: values.usernameColor,
+				sessionName: formik.values.sessionName,
+				userName: formik.values.userName,
+				usernameColor: formik.values.usernameColor,
 				usernameIcon: selectedIcon,
 				sessionId: sessionCode,
 			});
@@ -112,7 +113,9 @@ const HostCreateSession = () => {
 					onBlur={formik.handleBlur}
 					value={formik.values.userName}
 				/>
-				{formik.errors.userName ? <div>{formik.errors.userName}</div> : null}
+				{formik.touched.userName && formik.errors.userName ? (
+					<div>{formik.errors.userName}</div>
+				) : null}
 				<label htmlFor="username-color">Username Color:</label>
 				<input
 					type="color"
