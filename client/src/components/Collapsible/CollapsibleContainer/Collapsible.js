@@ -7,7 +7,9 @@ const Collapsible = () => {
 	return (
 		<CollapsibleContainer id="collapsible">
 			<h1>Frequently Asked Questions</h1>
-			<h3>Here are a few answers to some general questions about QrGen.app.</h3>
+			<h3>
+				Here are a few answers to some general questions about PointPilot.
+			</h3>
 			<div className="info">
 				{faqData.map((data) => (
 					<CollapsibleItem key={data.id} {...data} />

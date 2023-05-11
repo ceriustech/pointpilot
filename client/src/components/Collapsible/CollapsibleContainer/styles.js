@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { BACKGROUND_COLORS, TEXT_COLORS } from '../../../global/styles/Colors';
 import { maxView } from '../../../global/styles/mediaQueries';
 
-const { background1 } = BACKGROUND_COLORS;
+const { ashGrey } = BACKGROUND_COLORS;
 const { black } = TEXT_COLORS;
 const maxViewTablet = maxView.tablet;
 
 export const CollapsibleContainer = styled.div`
-	background-color: ${background1};
+	background-color: ${ashGrey};
 	font-size: 12px;
 	margin: 2rem auto;
 	border-radius: 0.5rem;
