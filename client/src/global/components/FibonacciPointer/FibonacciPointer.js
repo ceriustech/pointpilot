@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Input from '../../../components/Input';
+import { Container } from './styles';
 
 const FibonacciPointer = ({ onSelectionChange }) => {
 	const [selectedValue, setSelectedValue] = useState(0);
@@ -10,21 +12,21 @@ const FibonacciPointer = ({ onSelectionChange }) => {
 		onSelectionChange(value);
 	}
 
-	const fibonacciCard = fibonacci.map((value) => (
-		<div key={value}>
-			<input
-				type="radio"
-				id={`fib-${value}`}
-				name="fibonacci"
-				value={value}
-				checked={selectedValue === value}
-				onChange={handleChange}
-			/>
-			<label htmlFor={`fib-${value}`}>{value}</label>
-		</div>
+	const fibonacciCard = fibonacci.map((value, idx) => (
+		<Input
+			key={idx}
+			htmlFor={`fib-${value}`}
+			label={value}
+			id={`fib-${value}`}
+			fieldName="fibonacci"
+			type="radio"
+			value={value}
+			checked={selectedValue === value}
+			onChange={handleChange}
+		/>
 	));
 
-	return <>{fibonacciCard}</>;
+	return <Container>{fibonacciCard}</Container>;
 };
 
 export default FibonacciPointer;

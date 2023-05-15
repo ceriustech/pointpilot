@@ -97,6 +97,7 @@ const HostCreateSession = () => {
 				style={{ display: 'flex', flexDirection: 'column' }}
 			>
 				<Input
+					htmlFor="sessionName"
 					label="Session Name"
 					id="session-name"
 					fieldName="sessionName"
@@ -107,6 +108,7 @@ const HostCreateSession = () => {
 					autoCompleteValue-="off"
 				/>
 				<Input
+					htmlFor="userName"
 					label="User Name"
 					id="user-name"
 					fieldName="userName"

@@ -57,8 +57,6 @@ const Session = () => {
 				</PointerCard>
 				<button type="submit">Submit</button>
 			</form>
-
-			<div>{/* Chat component */}</div>
 		</div>
 	);
 };

@@ -4,6 +4,7 @@ import { InputContainer, InputLabel, InputField } from './styles';
 const Input = (props) => {
 	const {
 		label,
+		htmlFor,
 		id,
 		fieldName,
 		type,
@@ -11,12 +12,32 @@ const Input = (props) => {
 		placeHolder,
 		onChange,
 		onBlur,
+		checked,
 		autoCompleteValue,
 	} = props;
 
-	return (
+	let field;
+
+	if (type === 'radio') {
+		field = (
+			<InputContainer>
+				{label && <InputLabel htmlFor={htmlFor}>{label}</InputLabel>}
+				<InputField
+					id={id}
+					name={fieldName}
+					type={type}
+					placeholder={placeHolder}
+					value={value}
+					onChange={onChange}
+					checked={checked}
+				/>
+			</InputContainer>
+		);
+	}
+
+	field = (
 		<InputContainer>
-			<InputLabel htmlFor={fieldName}>{label}</InputLabel>
+			{label && <InputLabel htmlFor={htmlFor}>{label}</InputLabel>}
 			<InputField
 				id={id}
 				name={fieldName}
@@ -29,6 +50,8 @@ const Input = (props) => {
 			/>
 		</InputContainer>
 	);
+
+	return field;
 };
 
 export default Input;
