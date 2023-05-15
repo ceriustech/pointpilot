@@ -1,0 +1,13 @@
+{
+	"name": "point-pilot",
+	"version": "0.0.1",
+	"dependencies": {
+		"express": "^4.18.2",
+		"socket.io": "^4.6.1",
+		"ws": "^8.13.0"
+	},
+	"optionalDependencies": {
+		"bufferutil": "^4.0.7",
+		"utf-8-validate": "^5.0.10"
+	}
+}
