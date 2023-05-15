@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import Input from '../../../Input';
 import Scrollable from '../../../Scrollable/Scrollable';
 import Button from '../../../../global/components/Button/Button';
 import { useFormik } from 'formik';
@@ -95,31 +96,33 @@ const HostCreateSession = () => {
 				onSubmit={formik.handleSubmit}
 				style={{ display: 'flex', flexDirection: 'column' }}
 			>
-				<label htmlFor="sessionName">Session Name</label>
-				<input
+				<Input
+					label="Session Name"
 					id="session-name"
-					name="sessionName"
+					fieldName="sessionName"
 					type="text"
-					onChange={formik.handleChange}
-					onBlur={formik.handleBlur}
 					value={formik.values.sessionName}
-				/>
-				<label htmlFor="userName">User Name</label>
-				<input
-					id="user-name"
-					name="userName"
-					type="text"
 					onChange={formik.handleChange}
 					onBlur={formik.handleBlur}
+					autoCompleteValue-="off"
+				/>
+				<Input
+					label="User Name"
+					id="user-name"
+					fieldName="userName"
+					type="text"
 					value={formik.values.userName}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+					autoCompleteValue-="off"
 				/>
 				{formik.touched.userName && formik.errors.userName ? (
 					<div>{formik.errors.userName}</div>
 				) : null}
-				<label htmlFor="username-color">Username Color:</label>
-				<input
-					type="color"
+				<Input
+					label="Username Color"
 					id="username-color"
+					type="color"
 					value={userNameColor}
 					onChange={(event) => setUserNameColor(event.target.value)}
 				/>

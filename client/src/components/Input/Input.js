@@ -1,22 +1,33 @@
 import React from 'react';
-import { Field } from 'formik';
+import { InputContainer, InputLabel, InputField } from './styles';
 
 const Input = (props) => {
-	const { label, id, fieldName, type, values, placeHolder, autoCompleteValue } =
-		props;
+	const {
+		label,
+		id,
+		fieldName,
+		type,
+		value,
+		placeHolder,
+		onChange,
+		onBlur,
+		autoCompleteValue,
+	} = props;
 
 	return (
-		<>
-			<label htmlFor={fieldName}>{label}</label>
-			<Field
+		<InputContainer>
+			<InputLabel htmlFor={fieldName}>{label}</InputLabel>
+			<InputField
 				id={id}
 				name={fieldName}
 				type={type}
 				placeholder={placeHolder}
-				value={values}
+				value={value}
+				onChange={onChange}
+				onBlur={onBlur}
 				autoComplete={autoCompleteValue || ''}
 			/>
-		</>
+		</InputContainer>
 	);
 };
 
