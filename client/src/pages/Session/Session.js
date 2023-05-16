@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AppContext from '../../contextProvider/AppContext';
-import { PointerCard } from './styles';
+import { PointerCard, UserNameWrapper } from './styles';
 import Button from '../../global/components/Button/Button';
 import FibonacciPointer from '../../global/components/FibonacciPointer';
 import Date from '../../components/Date/Date';
@@ -42,7 +42,7 @@ const Session = () => {
 			<Date />
 			<form onSubmit={handleSubmit}>
 				<PointerCard>
-					<div>
+					<UserNameWrapper>
 						{usernameIcon && (
 							<img
 								src={urlFor(usernameIcon.image)}
@@ -52,7 +52,7 @@ const Session = () => {
 							/>
 						)}
 						<p style={{ color: `${usernameColor}` }}>{userName}</p>
-					</div>
+					</UserNameWrapper>
 					<FibonacciPointer onSelectionChange={handleFibonacciChange} />
 				</PointerCard>
 				<button type="submit">Submit</button>

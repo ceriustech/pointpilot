@@ -3,6 +3,7 @@ import { InputContainer, InputLabel, InputField } from './styles';
 
 const Input = (props) => {
 	const {
+		className,
 		label,
 		htmlFor,
 		id,
@@ -20,7 +21,7 @@ const Input = (props) => {
 
 	if (type === 'radio') {
 		field = (
-			<InputContainer>
+			<InputContainer className={className}>
 				{label && <InputLabel htmlFor={htmlFor}>{label}</InputLabel>}
 				<InputField
 					id={id}
@@ -36,7 +37,7 @@ const Input = (props) => {
 	}
 
 	field = (
-		<InputContainer>
+		<InputContainer className={className}>
 			{label && <InputLabel htmlFor={htmlFor}>{label}</InputLabel>}
 			<InputField
 				id={id}
