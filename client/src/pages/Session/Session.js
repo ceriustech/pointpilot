@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AppContext from '../../contextProvider/AppContext';
 import { PointerCard, UserNameWrapper } from './styles';
+import Chart from '../../components/Chart/Chart';
 import Button from '../../global/components/Button/Button';
 import FibonacciPointer from '../../global/components/FibonacciPointer';
 import Date from '../../components/Date/Date';
@@ -39,6 +40,7 @@ const Session = () => {
 			<div>
 				<p>Story ID:</p>
 			</div>
+			{/* <Chart /> */}
 			<Date />
 			<form onSubmit={handleSubmit}>
 				<PointerCard>

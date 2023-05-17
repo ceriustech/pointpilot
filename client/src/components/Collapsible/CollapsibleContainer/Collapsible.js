@@ -1,7 +1,7 @@
 import React from 'react';
 import CollapsibleItem from '../CollapsibleItem/CollapsibleItem';
 import { CollapsibleContainer } from './styles';
-import { faqData } from '../../../data/faq.data';
+import { faqData } from '../../../data/test.data';
 
 const Collapsible = () => {
 	return (
