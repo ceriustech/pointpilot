@@ -6,6 +6,7 @@ import Button from '../../global/components/Button/Button';
 import FibonacciPointer from '../../global/components/FibonacciPointer';
 import Date from '../../components/Date/Date';
 import { urlFor } from '../../client';
+import io from 'socket.io-client';
 
 const Session = () => {
 	const [selectedFibonacci, setSelectedFibonacci] = useState(0);
@@ -17,6 +18,20 @@ const Session = () => {
 	function handleFibonacciChange(value) {
 		setSelectedFibonacci(value);
 	}
+
+	useEffect(() => {
+		const socket = io('http://localhost:3001');
+
+		socket.on('news', (data) => {
+			console.log(data);
+		});
+
+		socket.emit('my event', { my: 'data' });
+
+		return () => {
+			socket.disconnect();
+		};
+	}, []);
 
 	console.log('%cSELECTED FIB DATA', 'font-size:2em;color:yellow');
 	console.log(selectedFibonacci);
